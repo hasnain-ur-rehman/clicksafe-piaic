@@ -8,7 +8,7 @@ import { scrollToSection } from "./nav";
 export function FinalChallenge() {
   const { result } = useQuizResult();
   const [href, setHref] = useState("");
-  useEffect(() => setHref(window.location.href.split("#")[0]), [result]);
+  useEffect(() => setHref(window.location.href.split("#")[0] ?? window.location.href), [result]);
 
   const text = result
     ? `I scored ${result.score}/${result.total} on the ClickSafe scam-spotting quiz. Think Before You Click — can you beat me? ${href}`
