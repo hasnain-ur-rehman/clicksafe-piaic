@@ -41,7 +41,7 @@ export function Hero() {
 function HeroGraphic() {
   return (
     <div className="relative mx-auto w-full max-w-md" aria-hidden="true">
-      <div className="absolute -right-4 -top-6 flex h-28 w-28 items-center justify-center">
+      <div className="absolute -right-6 -top-12 z-10 flex h-28 w-28 items-center justify-center">
         <span className="animate-pulse-ring absolute inset-0 rounded-full border border-cyan/50" />
         <span className="absolute inset-3 rounded-full bg-primary/20 blur-xl" />
         <LogoMark className="animate-float relative h-20 w-20 drop-shadow-[0_0_18px_var(--cyan)]" />

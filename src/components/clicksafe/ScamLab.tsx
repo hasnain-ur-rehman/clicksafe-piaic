@@ -69,11 +69,11 @@ export function ScamLab() {
           })}
         </ul>
 
-        <div key={active.id} className="animate-fade-up grid gap-6 md:grid-cols-2">
+        <div key={active.id} className="animate-fade-up grid items-start gap-6 md:grid-cols-2">
           <MessageView example={active} revealed={answered} />
           <div className="flex flex-col">
             {!answered ? (
-              <div className="panel flex flex-1 flex-col justify-center p-6 text-center">
+              <div className="panel flex flex-col justify-center p-6 text-center">
                 <p className="font-display text-lg font-semibold">What do you think?</p>
                 <p className="mt-2 text-sm text-muted-foreground">Look at who sent it, what it asks for, and how it makes you feel.</p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
