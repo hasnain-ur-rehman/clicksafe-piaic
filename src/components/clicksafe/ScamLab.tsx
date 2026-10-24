@@ -10,7 +10,7 @@ type Answers = Record<string, boolean>; // id -> user said scam
 const channelIcon = { sms: Smartphone, email: Mail, chat: MessageSquare };
 
 export function ScamLab() {
-  const [activeId, setActiveId] = useState(scamExamples[0].id);
+  const [activeId, setActiveId] = useState(scamExamples[0]!.id);
   const [answers, setAnswers] = useState<Answers>({});
   const active = scamExamples.find((e) => e.id === activeId)!;
   const answered = active.id in answers;
@@ -20,7 +20,7 @@ export function ScamLab() {
   const next = () => {
     const idx = scamExamples.findIndex((e) => e.id === activeId);
     const after = [...scamExamples.slice(idx + 1), ...scamExamples.slice(0, idx)].find((e) => !(e.id in answers));
-    setActiveId((after ?? scamExamples[(idx + 1) % scamExamples.length]).id);
+    setActiveId((after ?? scamExamples[(idx + 1) % scamExamples.length]!).id);
   };
 
   return (
@@ -33,7 +33,7 @@ export function ScamLab() {
         <p className="text-sm text-muted-foreground" aria-live="polite">
           Score: <span className="font-semibold text-success">{correctCount}</span> correct of {answeredCount} answered · {scamExamples.length} examples
         </p>
-        <Button variant="ghost" size="sm" onClick={() => { setAnswers({}); setActiveId(scamExamples[0].id); }} disabled={!answeredCount}>
+        <Button variant="ghost" size="sm" onClick={() => { setAnswers({}); setActiveId(scamExamples[0]!.id); }} disabled={!answeredCount}>
           <RotateCcw /> Reset lab
         </Button>
       </div>
@@ -86,7 +86,7 @@ export function ScamLab() {
                 </div>
               </div>
             ) : (
-              <Verdict example={active} saidScam={answers[active.id]} onNext={next} />
+              <Verdict example={active} saidScam={answers[active.id] === true} onNext={next} />
             )}
           </div>
         </div>

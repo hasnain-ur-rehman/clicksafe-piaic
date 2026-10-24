@@ -22,7 +22,7 @@ export function Quiz() {
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
 
-  const q = quizQuestions[index];
+  const q = quizQuestions[index]!;
 
   const choose = (i: number) => {
     if (selected !== null) return;

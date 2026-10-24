@@ -52,7 +52,7 @@ export function analyzeUrl(raw: string): AnalysisResult | AnalysisError {
   const add = (f: Finding) => findings.push(f);
   const host = url.hostname.toLowerCase();
   const labels = host.split(".");
-  const tld = labels[labels.length - 1];
+  const tld = labels[labels.length - 1] ?? "";
   const registrable = labels.slice(-2).join(".");
   const subLabels = labels.slice(0, -2);
 
@@ -69,7 +69,7 @@ export function analyzeUrl(raw: string): AnalysisResult | AnalysisError {
     add({ id: "ip", severity: "high", title: "Uses an IP address instead of a name", detail: "Real companies use domain names. A bare number address is a common way to hide who runs a site." });
   }
 
-  if (input.replace(/^[a-z]+:\/\//i, "").split(/[/?#]/)[0].includes("@")) {
+  if ((input.replace(/^[a-z]+:\/\//i, "").split(/[/?#]/)[0] ?? "").includes("@")) {
     add({ id: "at", severity: "high", title: "Contains an \"@\" symbol before the domain", detail: "Browsers ignore everything before \"@\". Scammers use it to show a trusted name while sending you somewhere else." });
   }
 
